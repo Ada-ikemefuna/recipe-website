@@ -9,7 +9,10 @@ const Cuisine = () => {
       let params = useParams();
 
       useEffect(() => {
-        getCuisine(params.type)
+        const abortCont = new AbortController();
+        getCuisine(params.type, {signal: abortCont.signal})
+        return () => abortCont.abort();
+        
     }, [params])
 
 

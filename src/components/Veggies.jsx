@@ -8,7 +8,9 @@ const Veggies = () => {
   const [veggies, setVeggies] = useState([]);
 
     useEffect(() => {
-        getVeggies()
+      const abortCont = new AbortController();
+      getVeggies({signal: abortCont.signal})
+      return () => abortCont.abort();
     }, [])
 
     const getVeggies = async() => {

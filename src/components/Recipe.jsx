@@ -17,7 +17,9 @@ const Recipe = () => {
     }
 
     useEffect(() => {
-        fetchDetails();
+      const abortCont = new AbortController();
+      fetchDetails({signal: abortCont.signal})
+      return () => abortCont.abort();
     }, [params.name])
 
   return (

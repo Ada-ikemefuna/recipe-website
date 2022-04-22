@@ -7,7 +7,9 @@ const Searched = () => {
     const params = useParams();
 
     useEffect(() => {
-        getSearched(params.search);
+      const abortCont = new AbortController();
+      getSearched((params.search), {signal: abortCont.signal})
+      return () => abortCont.abort();
     }, [params.search])
 
     const getSearched = async (name) => {

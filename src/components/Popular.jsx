@@ -8,7 +8,9 @@ const Popular = () => {
     const [popular, setPopular] = useState([]);
 
     useEffect(() => {
-        getPopular()
+      const abortCont = new AbortController();
+      getPopular({signal: abortCont.signal})
+      return () => abortCont.abort();
     }, [])
 
     const getPopular = async() => {
