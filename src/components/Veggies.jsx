@@ -8,9 +8,7 @@ const Veggies = () => {
   const [veggies, setVeggies] = useState([]);
 
     useEffect(() => {
-      const abortCont = new AbortController();
-      getVeggies({signal: abortCont.signal})
-      return () => abortCont.abort();
+      getVeggies()
     }, [])
 
     const getVeggies = async() => {
@@ -73,12 +71,12 @@ const Wrapper = styled.div`
 `
 const Card = styled.div`
     min-height: 25rem;
-    border-radius: 2rem;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
 
   img{
-    border-radius: 2rem;
+    border-radius: 5px;
     position: absolute;
     left: 0;
     width: 100%;

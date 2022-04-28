@@ -8,9 +8,7 @@ const Popular = () => {
     const [popular, setPopular] = useState([]);
 
     useEffect(() => {
-      const abortCont = new AbortController();
-      getPopular({signal: abortCont.signal})
-      return () => abortCont.abort();
+      getPopular()
     }, [])
 
     const getPopular = async() => {
@@ -77,12 +75,12 @@ const Wrapper = styled.div`
 `
 const Card = styled.div`
     min-height: 25rem;
-    border-radius: 2rem;
+    border-radius: 5px;
     overflow: hidden;
     position: relative;
 
   img{
-    border-radius: 2rem;
+    border-radius: 5px;
     position: absolute;
     left: 0;
     width: 100%;
